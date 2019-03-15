@@ -69,15 +69,14 @@ class ClientsController extends Controller //Controller resource
      * @param  int $client
      * @return \Illuminate\Http\Response
      */
-    public function update(ClientRequest $request, Client $client)
+    public function update(Request $request, Client $client)
     {
-        $data = $request->only(array_keys($request->rules()));
+        $data = $this->_validate($request);
         $data['defaulter'] = $request->has('defaulter');
         $client->fill($data);
         $client->save();
-        //\Session::flash('message','Cliente alterado com sucesso');
-        return redirect()->route('clients.index')
-            ->with('message','Cliente alterado com sucesso');
+
+        return redirect()->route('clients.index');
     }
     /**
      * Remove the specified resource from storage.
