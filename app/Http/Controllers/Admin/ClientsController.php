@@ -87,8 +87,7 @@ class ClientsController extends Controller //Controller resource
     public function destroy(Client $client)
     {
         $client->delete();
-        return redirect()->route('clients.index')
-            ->with('message','Cliente excluído com sucesso');
+        return redirect()->route('clients.index');
     }
 
     protected function _validate(Request $request)
