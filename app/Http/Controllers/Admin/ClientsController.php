@@ -13,7 +13,7 @@ class ClientsController extends Controller //Controller resource
      */
     public function index()
     {
-        $clients = \App\Client::all();
+        $clients = \App\Client::paginate(5);
         return view('admin.clients.index', compact('clients'));
     }
     /**
