@@ -1,8 +1,10 @@
 {{ csrf_field() }}
 <input type="hidden" name="client_type" value="{{ $clientType }}">
 <div class="form-group">
-    <label for="name">Nome</label>
-    <input type="text" class="form-control" id="name" name="name" value="{{old('name', $client->name)}}">
+    {{ Form::label('name')}}
+    {{ Form::text('name', old('name', $client->name), ['class' => 'form-control']) }}
+    <!-- <label for="name">Nome</label>-->
+    <!-- <input type="text" class="form-control" id="name" name="name" value="{{old('name', $client->name)}}"> -->
 </div>
 
 <div class="form-group">
