@@ -1,28 +1,29 @@
-<input type="hidden" name="client_type" value="{{ $clientType }}">
-<div class="form-group">
-    {{ Form::label('name', 'Nome')}}
+{{ Form::hidden('client_type', $clientType) }}
+
+@component('form._form_group', ['field' => 'name'])
+    {{ Form::label('name', 'Nome', ['class' => 'control-label'])}}
     {{ Form::text('name', null, ['class' => 'form-control']) }}
-</div>
+@endcomponent
 
-<div class="form-group">
-    {{ Form::label('document_number', 'Documento')}}
+@component('form._form_group', ['field' => 'document_number'])
+    {{ Form::label('document_number', 'Documento', ['class' => 'control-label'])}}
     {{ Form::text('document_number', null, ['class' => 'form-control']) }}
-</div>
+@endcomponent
 
-<div class="form-group">
-    {{ Form::label('email', 'E-mail')}}
+@component('form._form_group', ['field' => 'email'])
+    {{ Form::label('email', 'E-mail', ['class' => 'control-label'])}}
     {{ Form::email('email', null, ['class' => 'form-control']) }}
-</div>
+@endcomponent
 
-<div class="form-group">
-    {{ Form::label('phone', 'E-Telefone')}}
+@component('form._form_group', ['field' => 'phone'])
+    {{ Form::label('phone', 'E-Telefone', ['class' => 'control-label'])}}
     {{ Form::text('phone', null, ['class' => 'form-control']) }}
-</div>
+@endcomponent
 
 
 @if ($clientType == \App\Client::TYPE_INDIVIDUAL)
-    <div class="form-group">
-        {{ Form::label('marital_status', 'Estado Civil')}}
+    @component('form._form_group', ['field' => 'marital_status'])
+        {{ Form::label('marital_status', 'Estado Civil', ['class' => 'control-label'])}}
         {{
             Form::select('marital_status', [
                 '' => 'Selecione o estado civil',
@@ -31,38 +32,34 @@
                 '3' => 'Divorciado'
             ], null, ['class' => 'form-control'])
         }}
-    </div>
+    @endcomponent
 
-    <div class="form-group">
-        {{ Form::label('date_birth', 'Data Nasc.')}}
+    @component('form._form_group', ['field' => 'name'])
+        {{ Form::label('date_birth', 'Data Nasc.', ['class' => 'control-label'])}}
         {{ Form::date('date_birth', null, ['class' => 'form-control']) }}
-    </div>
+    @endcomponent
 
     @php
         $sex = old('sex', $client->sex);
     @endphp
-    <div class="radio">
-        <label>
-            {{ Form::radio('sex', 'm') }} Masculino
-        </label>
-    </div>
-
-    <div class="radio">
-        <label>
-            {{ Form::radio('sex', 'f') }} Feminino
-        </label>
-    </div>
-
-    <div class="form-group">
-        {{ Form::label('physical_disability', 'Deficiência Física')}}
+    @component('form._form_radio_group', ['field' => 'sex'])
+            <label>
+                {{ Form::radio('sex','m') }} Masculino
+            </label>
+            <label>
+                {{ Form::radio('sex','f') }} Feminino
+            </label>
+    @endcomponent
+    @component('form._form_group', ['field' => 'physical_disability'])
+        {{ Form::label('physical_disability', 'Deficiência Física', ['class' => 'control-label'])}}
         {{ Form::text('physical_disability', null, ['class' => 'form-control']) }}
-    </div>
+    @endcomponent
 
 @else
-    <div class="form-group">
-        {{ Form::label('company_name', 'Nome Fantasia')}}
+    @component('form._form_group', ['field' => 'physical_disability'])
+        {{ Form::label('company_name', 'Nome Fantasia', ['class' => 'control-label'])}}
         {{ Form::text('company_name', null, ['class' => 'form-control']) }}
-    </div>
+    @endcomponent
 @endif
 
 <div class="checkbox">
