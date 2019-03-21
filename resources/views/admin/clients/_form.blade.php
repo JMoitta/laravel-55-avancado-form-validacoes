@@ -45,13 +45,13 @@
     @endphp
     <div class="radio">
         <label>
-            <input type="radio" name="sex" value="m" {{$sex == 'm         ' || $sex == 'm' ? 'checked="checked"': ''}}> Masculino
+            <input type="radio" name="sex" value="m" {{trim($sex) == 'm' ? 'checked="checked"': ''}}> Masculino
         </label>
     </div>
 
     <div class="radio">
         <label>
-            <input type="radio" name="sex" value="f" {{$sex == 'f         ' || $sex == 'f' ? 'checked="checked"': ''}}> Feminino
+            <input type="radio" name="sex" value="f" {{trim ($sex) == 'f' ? 'checked="checked"': ''}}> Feminino
         </label>
     </div>
 
